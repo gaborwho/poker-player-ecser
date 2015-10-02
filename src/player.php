@@ -41,6 +41,7 @@ class Player
         $states = array_map(function(GameStatePlayer $p){return $p->getStatus();}, $players);
         Logger::log('states: ' . implode(',', $states));
 
+        $playerCount = $gameState->getInGamePlayerCount();
         if ($value == -1)
         {
             if ($playerCount > 2)

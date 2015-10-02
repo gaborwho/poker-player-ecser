@@ -66,6 +66,21 @@ class GameState
 
 
 
+    public function getInGamePlayerCount()
+    {
+        $active = 0;
+        foreach ($this->players as $player)
+        {
+            if ($player->getStatus() != 'out')
+            {
+                $active++;
+            }
+        }
+        return $active;
+    }
+
+
+
     public function activePlayers()
     {
         $active = 0;
