@@ -8,6 +8,9 @@ class GameState
     private $dealer;
     private $minimumRaise;
 
+    /** @var Card[] */
+    private $communityCards = array();
+
 
 
     public static function create($game_state)
@@ -24,6 +27,10 @@ class GameState
         $result->currentBuyIn = $game_state['current_buy_in'];
         $result->dealer = $game_state['dealer'];
         $result->minimumRaise = $game_state['minimum_raise'];
+        foreach ($game_state['community_cards'] as $cardData)
+        {
+            $result->communityCards[] = new Card($cardData['rank'], $cardData['suit']);
+        }
         return $result;
     }
 
@@ -90,5 +97,12 @@ class GameState
     public function getMinimumRaise()
     {
         return $this->minimumRaise;
+    }
+
+
+
+    public function getCommuntyCards()
+    {
+        return $this->communityCards;
     }
 }

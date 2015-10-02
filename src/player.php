@@ -16,10 +16,25 @@ class Player
         $call = $gameState->getCurrentBuyIn() - $myPlayer->getBet();
         $raise = $call + $gameState->getMinimumRaise();
 
+        $playerCount = count($gameState->getPlayers());
+
+        // POST
+        if (count($gameState->getCommuntyCards()))
+        {
+            $allCards = array_merge($gameState->getCommuntyCards(), $myHand);
+
+            $rankClient = new RankClient();
+            $handRank =  $rankClient->getRank($allCards)->rank;
+            if (in_array($handRank, array(0))) return $fold;
+            if (in_array($handRank, array(1, 2, 3))) return $call;
+            if (in_array($handRank, array(4, 5, 6))) return $raise;
+            return $allIn;
+        }
+
+
+        // PRE
         $detector = Detector::create(__DIR__ . '/../preflop.csv');
         $value = $detector->check($myHand);
-
-        $playerCount = count($gameState->getPlayers());
         if ($value == -1)
         {
             if ($playerCount > 2)
