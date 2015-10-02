@@ -56,6 +56,7 @@ class AllTest extends PHPUnit_Framework_TestCase
      */
     public function testAllin()
     {
+        $this->markTestIncomplete();
         $gameStateJson = file_get_contents(__DIR__ . '/fixtures/allin.json');
         $player = new Player();
         $gameState = GameState::create(json_decode($gameStateJson, true));
@@ -96,5 +97,21 @@ class AllTest extends PHPUnit_Framework_TestCase
     {
         $this->assertSame(1, Detector::create(__DIR__ . '/fixtures/preflop.csv')->check(array(new Card(3, 'spades'), new Card('K', 'spades'))));
         $this->assertSame(-1, Detector::create(__DIR__ . '/fixtures/preflop.csv')->check(array(new Card(3, 'hearts'), new Card('K', 'spades'))));
+    }
+
+
+
+    /**
+     * @test
+     */
+    public function whyWouldYouDoThat()
+    {
+        $gameStateJson = file_get_contents(__DIR__ . '/fixtures/why.json');
+        $player = new Player();
+        $gameState = GameState::create(json_decode($gameStateJson, true));
+
+        $bet = $player->betRequest($gameState);
+
+        $this->assertSame(480, $bet);
     }
 }
