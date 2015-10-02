@@ -19,18 +19,18 @@ class Player
         $players = $gameState->getPlayers();
         $playerCount = count($players);
 
-        // POST
-        if (count($gameState->getCommuntyCards()))
-        {
-            $allCards = array_merge($gameState->getCommuntyCards(), $myHand);
-
-            $rankClient = new RankClient();
-            $handRank =  $rankClient->getRank($allCards)->rank;
-            if (in_array($handRank, array(0))) return $fold;
-            if (in_array($handRank, array(1, 2, 3))) return $call;
-            if (in_array($handRank, array(4, 5, 6))) return $raise;
-            return $allIn;
-        }
+//        // POST
+//        if (count($gameState->getCommuntyCards()))
+//        {
+//            $allCards = array_merge($gameState->getCommuntyCards(), $myHand);
+//
+//            $rankClient = new RankClient();
+//            $handRank =  $rankClient->getRank($allCards)->rank;
+//            if (in_array($handRank, array(0))) return $fold;
+//            if (in_array($handRank, array(1, 2, 3))) return $call;
+//            if (in_array($handRank, array(4, 5, 6))) return $raise;
+//            return $allIn;
+//        }
 
 
         // PRE
