@@ -23,6 +23,12 @@ class GameState
     }
 
 
+    public function getPlayers()
+    {
+        return $this->players;
+    }
+
+
     public function activePlayers()
     {
         $active = 0;

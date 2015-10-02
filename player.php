@@ -8,7 +8,7 @@ class Player
     {
         $myPlayer = $gameState->getMyPlayer();
 
-        if ($gameState->activePlayers() >= 2) {
+        if (count($gameState->getPlayers()) > 2) {
             return 0;
         }
 
