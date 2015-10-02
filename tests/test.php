@@ -5,7 +5,7 @@ error_reporting(-1);
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../defines.php';
 
-class GameStateTest extends PHPUnit_Framework_TestCase
+class AllTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @test
