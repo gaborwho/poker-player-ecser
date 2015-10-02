@@ -11,13 +11,14 @@ class Player
         $myPlayer = $gameState->getMyPlayer();
 
         $twoCards = new TwoCards();
-        $preValue = $twoCards->value($myPlayer->getHand());
+        $preFlopValue = $twoCards->value($myPlayer->getHand());
+        $call = $gameState->getCurrentBuyIn() - $myPlayer->getBet();
 
         if (count($gameState->getPlayers()) > 2)
         {
-            if ($preValue > 0)
+            if ($preFlopValue > 0)
             {
-                return $gameState->getCurrentBuyIn() - $myPlayer->getBet();
+                return $call;
             }
             else
             {
