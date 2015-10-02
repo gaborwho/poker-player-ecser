@@ -12,7 +12,7 @@ class Card
         $this->suit = $suit;
     }
 
-    public function suitForStat()
+    public function rankForStat()
     {
         if (10 == $this->rank) {
             return 'T';

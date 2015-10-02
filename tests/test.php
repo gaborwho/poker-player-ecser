@@ -75,4 +75,15 @@ class GameStateTest extends PHPUnit_Framework_TestCase
         $hand = array(new Card(10, 'spades'), new Card('K', 'hearts'));
         $this->assertTrue(Detector::create(__DIR__ . '/fixtures/preflop.csv')->check($hand));
     }
+
+
+
+    /**
+     * @test
+     */
+    public function checkSuitedness()
+    {
+        $this->assertTrue(Detector::create(__DIR__ . '/fixtures/preflop.csv')->check(array(new Card(3, 'spades'), new Card('K', 'spades'))));
+        $this->assertFalse(Detector::create(__DIR__ . '/fixtures/preflop.csv')->check(array(new Card(3, 'hearts'), new Card('K', 'spades'))));
+    }
 }

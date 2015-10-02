@@ -25,7 +25,10 @@ class Detector
     {
         foreach ($this->statistics as $statLine)
         {
-            if ($statLine[0] == $hand[0]->suitForStat() . $hand[1]->suitForStat() || $statLine[0] == $hand[1]->suitForStat() . $hand[0]->suitForStat()) {
+            if ($statLine[2] && $hand[0]->suit !== $hand[1]->suit) {
+                continue;
+            }
+            if ($statLine[0] == $hand[0]->rankForStat() . $hand[1]->rankForStat() || $statLine[0] == $hand[1]->rankForStat() . $hand[0]->rankForStat()) {
                 return true;
             }
         }
