@@ -1,11 +1,11 @@
 <?php
 
-require_once('card.php');
-require_once('player.php');
-require_once('gamestate.php');
-require_once('gamestateplayer.php');
-require_once('twocards.php');
-require_once('logger.php');
+require_once('src/card.php');
+require_once('src/player.php');
+require_once('src/gamestate.php');
+require_once('src/gamestateplayer.php');
+require_once('src/twocards.php');
+require_once('src/logger.php');
 
-require_once('ranker.php');
-require_once('rankclient.php');
+require_once('src/ranker.php');
+require_once('src/rankclient.php');
