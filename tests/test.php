@@ -72,7 +72,7 @@ class GameStateTest extends PHPUnit_Framework_TestCase
      */
     public function getPreflop()
     {
-        $statistics = Statistics::getStats(__DIR__ . '/fixtures/preflop.csv');
-
+        $hand = array(new Card(10, 'spades'), new Card('K', 'hearts'));
+        $this->assertTrue(Detector::create(__DIR__ . '/fixtures/preflop.csv')->check($hand));
     }
 }
