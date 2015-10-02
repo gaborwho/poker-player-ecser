@@ -11,6 +11,7 @@ class Player
         if ($gameState->activePlayers() > 2) {
             return 0;
         }
+
         return 10000;
     }
 
