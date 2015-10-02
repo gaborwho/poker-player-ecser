@@ -72,7 +72,7 @@ class GameStateTest extends PHPUnit_Framework_TestCase
      */
     public function getPreflop()
     {
-        $statistics = Statistics::getStats(__DIR__ . '/../preflop.csv');
-//        var_dump($statistics);
+        $statistics = Statistics::getStats(__DIR__ . '/fixtures/preflop.csv');
+
     }
 }
