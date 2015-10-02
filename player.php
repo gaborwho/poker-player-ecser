@@ -2,7 +2,7 @@
 
 class Player
 {
-    const VERSION = "Default PHP folding player";
+    const VERSION = "The most awesome player ever";
 
     public function betRequest(GameState $gameState)
     {
