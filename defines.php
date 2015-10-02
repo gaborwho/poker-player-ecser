@@ -6,3 +6,6 @@ require_once('gamestate.php');
 require_once('gamestateplayer.php');
 require_once('twocards.php');
 require_once('logger.php');
+
+require_once('ranker.php');
+require_once('rankclient.php');
