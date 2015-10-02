@@ -30,14 +30,17 @@ class Player
             Logger::log('response time: ' . (microtime(true) - $before));
             if (in_array($handRank, array(0)))
             {
+                $this->logBet('fold', $playerCount, $myHand);
                 return $fold;
             }
             if (in_array($handRank, array(1, 2, 3)))
             {
+                $this->logBet('call', $playerCount, $myHand);
                 return $call;
             }
             if (in_array($handRank, array(4, 5, 6)))
             {
+                $this->logBet('raise', $playerCount, $myHand);
                 return $raise;
             }
             return $allIn;
