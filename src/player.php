@@ -18,14 +18,7 @@ class Player
 
         if (count($gameState->getPlayers()) > 2)
         {
-            if ($preFlopValue > 0)
-            {
-                return $call;
-            }
-            else
-            {
-                return 0;
-            }
+            return 0;
         }
 
         return 100000;
