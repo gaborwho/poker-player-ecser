@@ -1,13 +1,15 @@
 <?php
 
 require_once('player.php');
+require_once('gamestate.php');
 
 $player = new Player();
 
 switch($_POST['action'])
 {
     case 'bet_request':
-        echo $player->betRequest(json_decode($_POST['game_state'], true));
+        $state = GameState::create(json_decode($_POST['game_state'], true));
+        echo $player->betRequest($state);
         break;
     case 'showdown':
         $player->showdown(json_decode($_POST['game_state'], true));

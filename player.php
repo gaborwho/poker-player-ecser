@@ -4,8 +4,11 @@ class Player
 {
     const VERSION = "Default PHP folding player";
 
-    public function betRequest($game_state)
+    public function betRequest(GameState $gameState)
     {
+        if ($gameState->activePlayers() > 2) {
+            return 0;
+        }
         return 10000;
     }
 
