@@ -112,6 +112,6 @@ class AllTest extends PHPUnit_Framework_TestCase
 
         $bet = $player->betRequest($gameState);
 
-        $this->assertSame(480, $bet);
+        $this->assertSame(240, $bet);
     }
 }

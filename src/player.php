@@ -16,7 +16,8 @@ class Player
         $call = $gameState->getCurrentBuyIn() - $myPlayer->getBet();
         $raise = $call + $gameState->getMinimumRaise();
 
-        $playerCount = count($gameState->getPlayers());
+        $players = $gameState->getPlayers();
+        $playerCount = count($players);
 
         // POST
         if (count($gameState->getCommuntyCards()))
@@ -35,6 +36,11 @@ class Player
         // PRE
         $detector = Detector::create(__DIR__ . '/../preflop.csv');
         $value = $detector->check($myHand);
+
+
+        $states = array_map(function(GameStatePlayer $p){return $p->getStatus();}, $players);
+        Logger::log('states: ' . implode(',', $states));
+
         if ($value == -1)
         {
             if ($playerCount > 2)
