@@ -2,24 +2,33 @@
 
 class GameState
 {
-    public $players;
+    /** @var GameStatePlayer[] */
+    private $players;
+    private $currentBuyIn;
 
 
     public static function create($game_state)
     {
+        $result = new GameState();
+
         $players = array();
         foreach ($game_state['players'] as $player) {
             $players[] = new GameStatePlayer($player);
         }
-        return new GameState($players);
+
+        $result->players = $players;
+        $result->currentBuyIn = $game_state['current_buy_in'];
+        return $result;
     }
 
-    /**
-     * @param GameStatePlayer[] $players
-     */
-    public function __construct(array $players)
+    private function __construct()
     {
-        $this->players = $players;
+    }
+
+
+    public function getCurrentBuyIn()
+    {
+        return $this->currentBuyIn;
     }
 
 
@@ -29,12 +38,13 @@ class GameState
     }
 
 
+
     public function activePlayers()
     {
         $active = 0;
         foreach ($this->players as $player)
         {
-            if ($player->status == 'active')
+            if ($player->getStatus() == 'active')
             {
                 $active++;
             }
@@ -46,7 +56,7 @@ class GameState
     {
         foreach ($this->players as $player)
         {
-            if (!empty($player->cards))
+            if (!empty($player->getHand()))
             {
                 return $player;
             }
