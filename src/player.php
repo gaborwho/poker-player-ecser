@@ -11,9 +11,6 @@ class Player
         $myPlayer = $gameState->getMyPlayer();
         $myHand = $myPlayer->getHand();
 
-        $twoCards = new TwoCards();
-        $preFlopValue = $twoCards->value($myHand);
-
         $allIn = 100000;
         $fold = 0;
         $call = $gameState->getCurrentBuyIn() - $myPlayer->getBet();
