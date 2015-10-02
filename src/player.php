@@ -26,11 +26,20 @@ class Player
 
             $rankClient = new RankClient();
             $before = microtime(true);
-            $handRank =  $rankClient->getRank($allCards)->rank;
+            $handRank = $rankClient->getRank($allCards)->rank;
             Logger::log('response time: ' . (microtime(true) - $before));
-            if (in_array($handRank, array(0))) return $fold;
-            if (in_array($handRank, array(1, 2, 3))) return $call;
-            if (in_array($handRank, array(4, 5, 6))) return $raise;
+            if (in_array($handRank, array(0)))
+            {
+                return $fold;
+            }
+            if (in_array($handRank, array(1, 2, 3)))
+            {
+                return $call;
+            }
+            if (in_array($handRank, array(4, 5, 6)))
+            {
+                return $raise;
+            }
             return $allIn;
         }
 
@@ -40,35 +49,28 @@ class Player
         $value = $detector->check($myHand);
 
 
-        $states = array_map(function(GameStatePlayer $p){return $p->getStatus();}, $players);
-
         $playerCount = $gameState->getInGamePlayerCount();
-        if ($value == -1)
+        if ($playerCount > 2)
         {
-            if ($playerCount > 2)
+            if ($value == -1)
             {
                 $this->logBet('fold', $playerCount, $myHand);
                 return $fold;
             }
-            $this->logBet('allin', $playerCount, $myHand);
-            return $allIn;
-        }
-        elseif ($value < 8)
-        {
-            $this->logBet('raise', $playerCount, $myHand);
-            return $raise;
-        }
-        else
-        {
-            if ($playerCount > 2)
+            elseif ($value < 8)
+            {
+                $this->logBet('raise', $playerCount, $myHand);
+                return $raise;
+            }
+            else
             {
                 $this->logBet('fold', $playerCount, $myHand);
                 return $fold;
             }
-            $this->logBet('call', $playerCount, $myHand);
-            return $call;
         }
 
+        $this->logBet('allin', $playerCount, $myHand);
+        return $allIn;
     }
 
 
