@@ -42,10 +42,8 @@ class GameState
         {
             if (!empty($player->cards))
             {
-                Logger::log('my name is ' . $player->name);
                 return $player;
             }
         }
-        Logger::log('failed to get my player');
     }
 }

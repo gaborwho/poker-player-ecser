@@ -1,9 +1,6 @@
 <?php
 
-require_once('card.php');
-require_once('player.php');
-require_once('gamestate.php');
-require_once('gamestateplayer.php');
+require_once('defines.php');
 
 $player = new Player();
 
@@ -18,14 +15,4 @@ switch ($_POST['action'])
         break;
     case 'version':
         echo Player::VERSION;
-}
-
-class Logger
-{
-    public static function log($message)
-    {
-        $stderr = fopen('php://stderr', 'w');
-        fwrite($stderr, $message);
-        fclose($stderr);
-    }
 }

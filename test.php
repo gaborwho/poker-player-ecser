@@ -1,8 +1,7 @@
 <?php
 
 require_once 'vendor/autoload.php';
-require_once 'player.php';
-require_once 'gamestate.php';
+require_once 'defines.php';
 
 class GameStateTest extends PHPUnit_Framework_TestCase
 {
@@ -15,5 +14,17 @@ class GameStateTest extends PHPUnit_Framework_TestCase
         $gameState = GameState::create(json_decode($gameStateJson, true));
 
         $this->assertEquals(2, $gameState->activePlayers());
+    }
+
+    /**
+     * @test
+     */
+    public function testMyHand()
+    {
+        $gameStateJson = file_get_contents('test.json');
+        $gameState = GameState::create(json_decode($gameStateJson, true));
+        $player = $gameState->getMyPlayer();
+
+        $this->assertCount(2, $player->getHand());
     }
 }
