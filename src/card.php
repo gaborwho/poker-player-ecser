@@ -19,4 +19,9 @@ class Card
         }
         return (string)$this->rank;
     }
+
+    public function __toString()
+    {
+        return '(' . $this->suit . '|' .  $this->rank . ')';
+    }
 }

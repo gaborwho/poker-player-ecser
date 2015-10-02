@@ -24,20 +24,20 @@ class Player
         {
             if ($playerCount > 2)
             {
-                Logger::log('folding: ' . $playerCount . ' - ' . $myHand[0]->rankForStat() . ':' . $myHand[1]->rankForStat());
+                $this->logBet('fold', $playerCount, $myHand);
                 return $fold;
             }
-            Logger::log('allin: ' . $playerCount . ' - ' . $myHand[0]->rankForStat() . ':' . $myHand[1]->rankForStat());
+            $this->logBet('allin', $playerCount, $myHand);
             return $allIn;
         }
         elseif ($value < 8)
         {
-            Logger::log('raise: ' . $playerCount . ' - ' . $myHand[0]->rankForStat() . ':' . $myHand[1]->rankForStat());
+            $this->logBet('raise', $playerCount, $myHand);
             return $raise;
         }
         else
         {
-            Logger::log('call: ' . $playerCount . ' - ' . $myHand[0]->rankForStat() . ':' . $myHand[1]->rankForStat());
+            $this->logBet('call', $playerCount, $myHand);
             return $call;
         }
 
@@ -47,5 +47,12 @@ class Player
 
     public function showdown($game_state)
     {
+    }
+
+
+
+    private function logBet($action, $playerCount, $myHand)
+    {
+        Logger::log($action . ': ' . $playerCount . ' - ' . $myHand[0] . ':' . $myHand[1]);
     }
 }
