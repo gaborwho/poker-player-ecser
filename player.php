@@ -6,9 +6,9 @@ class Player
 
     public function betRequest(GameState $gameState)
     {
-        $gameState->getMyPlayer();
+        $myPlayer = $gameState->getMyPlayer();
 
-        if ($gameState->activePlayers() > 2) {
+        if ($gameState->activePlayers() >= 2) {
             return 0;
         }
 
