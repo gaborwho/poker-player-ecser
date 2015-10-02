@@ -1,5 +1,8 @@
 {
   "require": {
     "nategood/httpful": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
   }
 }
