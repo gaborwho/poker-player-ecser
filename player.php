@@ -6,13 +6,21 @@ class Player
 
     public function betRequest(GameState $gameState)
     {
-        $myPlayer = $gameState->getMyPlayer();
+        try
+        {
+            $myPlayer = $gameState->getMyPlayer();
 
-        if (count($gameState->getPlayers()) > 2) {
+            if (count($gameState->getPlayers()) > 2)
+            {
+                return 0;
+            }
+
+            return 10000;
+        }
+        catch (Exception $e)
+        {
             return 0;
         }
-
-        return 10000;
     }
 
     public function showdown($game_state)
