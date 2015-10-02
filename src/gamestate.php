@@ -6,6 +6,7 @@ class GameState
     private $players;
     private $currentBuyIn;
     private $dealer;
+    private $minimumRaise;
 
 
 
@@ -22,6 +23,7 @@ class GameState
         $result->players = $players;
         $result->currentBuyIn = $game_state['current_buy_in'];
         $result->dealer = $game_state['dealer'];
+        $result->minimumRaise = $game_state['minimum_raise'];
         return $result;
     }
 
@@ -81,5 +83,12 @@ class GameState
                 return $player;
             }
         }
+    }
+
+
+
+    public function getMinimumRaise()
+    {
+        return $this->minimumRaise;
     }
 }

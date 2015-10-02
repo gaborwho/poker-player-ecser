@@ -15,12 +15,13 @@ class Player
         $preFlopValue = $twoCards->value($myHand);
 
         $call = $gameState->getCurrentBuyIn() - $myPlayer->getBet();
+        $raise = $call + $gameState->getMinimumRaise();
+
 
         if (count($gameState->getPlayers()) > 2)
         {
             return 0;
         }
-
 
 
         return 100000;
