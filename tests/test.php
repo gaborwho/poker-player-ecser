@@ -81,6 +81,17 @@ class AllTest extends PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function getPreflopUnsuited()
+    {
+        $hand = array(new Card(3, 'spades'), new Card('K', 'hearts'));
+        $this->assertFalse(Detector::create(__DIR__ . '/fixtures/preflop.csv')->check($hand));
+    }
+
+
+
+    /**
+     * @test
+     */
     public function checkSuitedness()
     {
         $this->assertTrue(Detector::create(__DIR__ . '/fixtures/preflop.csv')->check(array(new Card(3, 'spades'), new Card('K', 'spades'))));
