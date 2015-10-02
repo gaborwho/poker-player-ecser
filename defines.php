@@ -12,3 +12,5 @@ require_once('src/ranker.php');
 require_once('src/rankclient.php');
 
 require_once('src/statistics.php');
+
+require_once('vendor/autoload.php');
