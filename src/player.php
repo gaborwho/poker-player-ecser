@@ -67,6 +67,10 @@ class Player
             }
             else
             {
+                if ($call < 200) {
+                    $this->logBet('call', $playerCount, $myHand);
+                    return $call;
+                }
                 $this->logBet('fold', $playerCount, $myHand);
                 return $fold;
             }
