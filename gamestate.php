@@ -35,14 +35,30 @@ class GameState
         }
         return $active;
     }
+
+    public function getMyPlayer()
+    {
+        foreach ($this->players as $player)
+        {
+            if (!empty($player->cards))
+            {
+                Logger::log('my name is ' . $player->name);
+                return $player;
+            }
+        }
+        Logger::log('failed to get my player');
+    }
 }
 
 class GameStatePlayer
 {
     public $status;
+    public $cards;
 
     public function __construct($player)
     {
         $this->status = $player['status'];
+        $this->name = $player['name'];
+        $this->cards = array_key_exists('hole_cards', $player) ? $player['hole_cards'] : array();
     }
 }
