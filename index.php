@@ -2,7 +2,9 @@
 
 require_once('defines.php');
 
-set_error_handler(function($error){Logger::log($error);echo 0;exit;}, E_ALL & ~E_NOTICE & ~E_WARNING);
+set_error_handler(function($error){
+    Logger::log('error: ' . $error);echo 0;exit;
+}, E_ALL & ~E_NOTICE & ~E_WARNING);
 
 $player = new Player();
 
