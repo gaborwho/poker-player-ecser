@@ -19,6 +19,9 @@ class GameStatePlayer
 
 
 
+    /**
+     * @return Card[]
+     */
     public function getHand()
     {
         $hand = array();
