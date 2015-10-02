@@ -21,6 +21,8 @@ class Player
             return 0;
         }
 
+
+
         return 100000;
     }
 

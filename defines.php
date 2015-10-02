@@ -9,3 +9,5 @@ require_once('src/logger.php');
 
 require_once('src/ranker.php');
 require_once('src/rankclient.php');
+
+require_once('src/statistics.php');
