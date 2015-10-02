@@ -14,6 +14,7 @@ class Player
         $twoCards = new TwoCards();
         $preFlopValue = $twoCards->value($myHand);
 
+        $allIn = 100000;
         $fold = 0;
         $call = $gameState->getCurrentBuyIn() - $myPlayer->getBet();
         $raise = $call + $gameState->getMinimumRaise();
@@ -21,21 +22,23 @@ class Player
         $detector = Detector::create(__DIR__ . '/../preflop.csv');
         $value = $detector->check($myHand);
 
-        if ($value == -1) {
-            return $fold;
-        } elseif ($value < 8) {
+        if ($value == -1)
+        {
+            if (count($gameState->getPlayers()) > 2)
+            {
+                return $fold;
+            }
+            return $allIn;
+        }
+        elseif ($value < 8)
+        {
             return $raise;
-        } else {
+        }
+        else
+        {
             return $call;
         }
 
-//        if (count($gameState->getPlayers()) > 2)
-//        {
-//            return 0;
-//        }
-//
-//
-//        return 100000;
     }
 
 
