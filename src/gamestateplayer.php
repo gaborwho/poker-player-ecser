@@ -2,6 +2,7 @@
 
 class GameStatePlayer
 {
+    private $name;
     private $status;
     private $cards;
     private $bet;
@@ -40,5 +41,12 @@ class GameStatePlayer
     public function getBet()
     {
         return $this->bet;
+    }
+
+
+
+    public function getName()
+    {
+        return $this->name;
     }
 }

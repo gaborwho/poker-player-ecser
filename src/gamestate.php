@@ -5,6 +5,8 @@ class GameState
     /** @var GameStatePlayer[] */
     private $players;
     private $currentBuyIn;
+    private $dealer;
+
 
 
     public static function create($game_state)
@@ -12,24 +14,40 @@ class GameState
         $result = new GameState();
 
         $players = array();
-        foreach ($game_state['players'] as $player) {
+        foreach ($game_state['players'] as $player)
+        {
             $players[] = new GameStatePlayer($player);
         }
 
         $result->players = $players;
         $result->currentBuyIn = $game_state['current_buy_in'];
+        $result->dealer = $game_state['dealer'];
         return $result;
     }
+
+
 
     private function __construct()
     {
     }
 
 
+
     public function getCurrentBuyIn()
     {
         return $this->currentBuyIn;
     }
+
+
+
+    /**
+     * @return GameStatePlayer
+     */
+    public function getFirstPlayer()
+    {
+        return $this->players[($this->dealer + 1) % (count($this->players))];
+    }
+
 
 
     public function getPlayers()
@@ -51,6 +69,8 @@ class GameState
         }
         return $active;
     }
+
+
 
     public function getMyPlayer()
     {
